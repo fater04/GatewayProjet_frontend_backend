@@ -1,0 +1,105 @@
+<app-header></app-header>
+<section class="section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-12 d-none d-md-block">
+        <app-admin-menu></app-admin-menu>
+      </div>
+
+      <div class="col-lg-9 col-md-8 col-12 ">
+
+
+        <div class="p-4">
+          <div class="faq-content">
+            <div class="accordion" id="accordionExample">
+              <div class="card border-0 rounded mb-2">
+                <a data-toggle="collapse" href="#collapse_message" class="faq position-relative collapsed" aria-expanded="false" aria-controls="collapsethree">
+                  <div class="card-header border-0 bg-light p-3 pr-5" id="send_message">
+                    <h6 class="title mb-0"> <i class="mdi mdi-send mr-1"></i>Envoyer un message</h6>
+                  </div>
+                </a>
+                <div id="collapse_message" class="collapse" aria-labelledby="send_message" data-parent="#accordionExample">
+                  <div class="card-body px-2 py-4">
+                    <form>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Device</label>
+                            <div class="position-relative">
+                              <i data-feather="book" class="fea icon-sm icons"></i>
+                              <input type="text" name="device"   class="form-control pl-5" placeholder="choose your Device">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Phone Number</label>
+                            <div class="position-relative">
+                              <i data-feather="book" class="fea icon-sm icons"></i>
+                              <input type="text" name="phone" class="form-control pl-5" placeholder="enter the phone number">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Message</label>
+                            <div class="position-relative">
+                              <i data-feather="message-circle" class="fea icon-sm icons"></i>
+                              <textarea name="comments" id="comments" rows="2" class="form-control pl-5" placeholder="Your Message :"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div><!--end row-->
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <input type="submit" id="submit" name="send" class="btn btn-primary" value="Send Message">
+                        </div><!--end col-->
+                      </div><!--end row-->
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row row-cols-1 ml-lg-2">
+
+          <div class="col " id="tables">
+            <div class="component-wrapper rounded shadow">
+              <div class="p-4 border-bottom">
+                <h4 class="title mb-0"> Liste des Messages </h4>
+              </div>
+
+              <div class="p-4">
+                <div class="table-responsive bg-white shadow rounded">
+                  <table class="table mb-0 table-center">
+                    <thead>
+                    <tr class="text-info">
+
+                      <th scope="col">ID</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col">Message</th>
+                      <th scope="col">Device</th>
+                      <th scope="col">Statut</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

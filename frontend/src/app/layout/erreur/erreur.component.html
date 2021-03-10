@@ -1,0 +1,22 @@
+<div class="back-to-home rounded d-none d-sm-block">
+  <a routerLink="/home" class="btn btn-icon btn-soft-primary"><i data-feather="home" class="mdi mdi-home"></i></a>
+</div>
+
+<section class="bg-home d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center mt-1">
+      <div class="col-lg-8 col-md-12 text-center">
+        <img src="../assets/images/404.svg" class="img-fluid" alt="">
+        <div class="text-uppercase  mt-0 mb-0 text-white-50">Oh ! no</div>
+        <div class="error-page  mt-0 mb-0 text-white-50">Page Not Found</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <a class="btn btn-outline-primary mt-1" (click)="goBack()">Go Back</a>
+        <a routerLink="/home" class="btn btn-primary mt-1 ml-2">Go To Home</a>
+      </div>
+    </div>
+  </div>
+</section>

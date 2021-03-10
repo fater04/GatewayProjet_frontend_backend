@@ -1,0 +1,81 @@
+<app-header></app-header>
+<section class="section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-12 d-none d-md-block">
+    <app-admin-menu></app-admin-menu>
+      </div>
+
+      <div class="col-lg-9 col-md-8 col-12 ">
+        <div class="col mt-4 pt-2" >
+          <div class="component-wrapper rounded shadow">
+            <div class="p-4 border-bottom">
+              <h4 class="title mb-0"> Users detail </h4>
+            </div>
+
+            <div class="p-4">
+              <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Fullname</label>
+                      <div class="position-relative">
+                        <i data-feather="user" class="fea icon-sm icons"></i>
+                        <input  name="fullname"  type="text" class="form-control pl-5" [(ngModel)]="user.nomcomplet" required="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Email <span class="text-danger">*</span></label>
+                      <div class="position-relative">
+                        <i data-feather="mail" class="fea icon-sm icons"></i>
+                        <input  name="email" type="email" class="form-control pl-5" [(ngModel)]="user.email" required="required">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Username</label>
+                      <div class="position-relative">
+                        <i data-feather="user" class="fea icon-sm icons"></i>
+                        <input  name="username" type="text" class="form-control pl-5" [(ngModel)]="user.pseudo"  required="required">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Role</label>
+                      <div class="position-relative">
+                        <i data-feather="role" class="fea icon-sm icons"></i>
+                        <input name="role" type="text" class="form-control pl-5" [(ngModel)]="user.role" required="required">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Phone</label>
+                      <div class="position-relative">
+                        <i data-feather="role" class="fea icon-sm icons"></i>
+                        <input  name="phone" type="text" class="form-control pl-5" [(ngModel)]="user.phone" required="required">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <input [disabled]="f.invalid" type="submit" id="submit" name="send" class="btn btn-primary" value="Save">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

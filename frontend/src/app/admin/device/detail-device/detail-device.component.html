@@ -1,0 +1,66 @@
+<app-header></app-header>
+<section class="section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-12 d-none d-md-block">
+        <app-admin-menu></app-admin-menu>
+      </div>
+
+      <div class="col-lg-9 col-md-8 col-12 ">
+        <div class="col mt-4 pt-2">
+          <div class="component-wrapper rounded shadow">
+            <div class="p-4 border-bottom">
+              <h4 class="title mb-0"> Edit Device </h4>
+            </div>
+
+            <div class="p-4">
+              <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>CODE </label>
+                      <div class="position-relative">
+                        <i data-feather="code" class="fea icon-sm icons"></i>
+                        <input name="code" type="text" class="form-control pl-5" [(ngModel)]="device.code"
+                               required="required">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+
+                      <div class="form-group">
+                        <label>NOM</label>
+                        <div class="position-relative">
+                          <i data-feather="nom" class="fea icon-sm icons"></i>
+                          <input name="nom" type="text" class="form-control pl-5" [(ngModel)]="device.nom"
+                                 required="required">
+                        </div>
+                      </div>
+
+                    </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Phone</label>
+                      <div class="position-relative">
+                        <i data-feather="phone" class="fea icon-sm icons"></i>
+                        <input name="phone" type="text" class="form-control pl-5" [(ngModel)]="device.phone"
+                               required="required">
+                      </div>
+                    </div>
+                  </div>
+                  <input [disabled]="f.invalid" type="submit" id="submit" name="send" class="ml-3 btn btn-primary"
+                         value="Edit">
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

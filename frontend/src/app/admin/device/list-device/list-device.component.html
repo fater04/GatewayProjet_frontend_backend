@@ -1,0 +1,85 @@
+<app-header></app-header>
+<section class="section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-12 d-none d-md-block">
+        <app-admin-menu></app-admin-menu>
+      </div>
+
+      <div class="col-lg-9 col-md-8 col-12 ">
+
+        <div class="row row-cols-1 ml-lg-2">
+
+          <div class="col " >
+            <div class="component-wrapper rounded shadow">
+              <div class="p-4 border-bottom">
+                <h4 class="title mb-0"> Liste de mes appareils
+                  <button class="btn btn-sm btn-icon btn-outline-secondary" (click)="refresh()">
+                    <i class="mdi mdi-refresh mdi-18px text-white-50" aria-hidden="true"></i>
+                  </button> </h4>
+              </div>
+
+              <div class="p-4">
+                <div class="table-responsive bg-white shadow rounded">
+                  <table class="table mb-0 table-center small">
+                    <thead class="text-info">
+                    <tr>
+
+                      <th scope="col">CODE</th>
+                      <th scope="col">NOM</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col">OPTION</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let device of devices">
+                      <td>{{device.code}}</td>
+                      <td>{{device.nom}}</td>
+                      <td>{{device.phone}}</td>
+                      <td>
+                        <ng-template #htmlContent>
+                         <div class="text-left" *ngFor="let a of device.attribut">
+                           <strong class="text-info">Attribut<br/></strong>
+                           Marque :  {{a.marque}}<br/>
+                           Modele : {{a.modele}} <br/>
+                           Reseau : {{a.reseau}} <br/>
+                           Pays   : {{a.pays}} <br/>
+                           connection : {{a.connection}} <br/>
+                           batterie : {{a.batterie}} <br/>
+                           Signal Pourcentage : {{a.signal}} <br/>
+                           wifi :  {{a.wifi}} <br/>
+                           latitude : {{a.latitude}} <br/>
+                           longitude : {{a.longitude}} <br/>
+                           Last Seen : {{a.updatedAt | date : 'short'}}
+                         </div>
+                        </ng-template>
+                        <button class="btn btn-sm btn-icon btn-outline-secondary mr-1"
+                                [ngbTooltip]="htmlContent" >
+                          <i class="mdi mdi-information-variant  text-info mdi-18px" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-outline-success mr-1" routerLink="{{device.code}}">
+                          <i class="mdi mdi-pencil  text-info mdi-18px" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" (click)="delete(device.id)">
+                          <i class="mdi mdi-trash-can  text-danger mdi-18px" aria-hidden="true"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

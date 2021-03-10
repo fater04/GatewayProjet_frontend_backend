@@ -1,0 +1,263 @@
+<app-header></app-header>
+
+
+<section class="bg-profile d-table w-100 bg-soft-primary"
+         style="background: url('../assets/images/bg.png') center center;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card public-profile border-0 rounded shadow" style="z-index: 1;">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-lg-2 col-md-3 text-md-left text-center">
+                <img src="../assets/images/04.jpg" class="avatar avatar-large rounded-circle shadow d-block mx-auto"
+                     alt="">
+              </div>
+
+              <div class="col-lg-10 col-md-9">
+                <div class="row align-items-end">
+                  <div class="col-md-7 text-md-left text-center mt-4 mt-sm-0">
+                    <h3 class="title mb-0">{{ user.pseudo }}</h3>
+                    <small class="text-muted h6 mr-2">{{ user.email }}</small>
+                  </div>
+                  <div class="col-md-5 text-md-right text-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section mt-60">
+
+
+  <div class="container mt-lg-3">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 mt-4 pt-2">
+        <br/><br/>
+        <div class="component-wrapper rounded shadow">
+          <div class="p-4">
+            <div class="row">
+              <div class="col-lg-12">
+                <ul class="nav nav-pills nav-justified flex-column flex-sm-row rounded" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link rounded active" id="pills-device-tab" data-toggle="pill" href="#DEVICE"
+                       role="tab"
+                       aria-controls="DEVICE" aria-selected="false">
+                      <div class="text-center py-2">
+                        <h6 class="mb-0">Device</h6>
+                      </div>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link rounded" id="pills-message-tab" data-toggle="pill" href="#MESSAGE" role="tab"
+                       aria-controls="MESSAGE" aria-selected="true">
+                      <div class="text-center py-2">
+                        <h6 class="mb-0">Message</h6>
+                      </div>
+                    </a>
+                  </li>
+
+
+                  <li class="nav-item">
+                    <a class="nav-link rounded " id="pills-setting-tab" data-toggle="pill" href="#SETTING" role="tab"
+                       aria-controls="SETTING" aria-selected="true">
+                      <div class="text-center py-2">
+                        <h6 class="mb-0">Setting</h6>
+                      </div>
+                    </a>
+                  </li>
+
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="row pt-2">
+              <div class="col-12">
+                <div class="tab-content" id="pills-tabContent">
+                  <div class="tab-pane fade  show active" id="DEVICE" role="tabpanel"
+                       aria-labelledby="pills-device-tab">
+                    <div class="component-wrapper rounded shadow">
+                      <div class="p-4 border-bottom">
+                        <h4 class="title mb-0"> Liste de mes appareils
+                          <button class="btn btn-sm btn-icon btn-outline-secondary" (click)="refresh()">
+                            <i class="mdi mdi-refresh mdi-18px text-white-50" aria-hidden="true"></i>
+                          </button>
+                        </h4>
+                      </div>
+
+                      <div class="p-4">
+                        <div class="table-responsive bg-white shadow rounded">
+                          <table class="table mb-0 table-center small">
+                            <thead class="text-info">
+                            <tr>
+
+                              <th scope="col">CODE</th>
+                              <th scope="col">NOM</th>
+                              <th scope="col">Phone</th>
+                              <th scope="col">OPTION</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let device of devices">
+                              <td>{{device.code}}</td>
+                              <td>{{device.nom}}</td>
+                              <td>{{device.phone}}</td>
+                              <td>
+                                <ng-template #htmlContent>
+                                  <div class="text-left" *ngFor="let a of device.attribut">
+                                    <strong class="text-info">Attribut<br/></strong>
+                                    Marque :  {{a.marque}}<br/>
+                                    Modele : {{a.modele}} <br/>
+                                    Reseau : {{a.reseau}} <br/>
+                                    Pays : {{a.pays}} <br/>
+                                    connection : {{a.connection}} <br/>
+                                    batterie : {{a.batterie}} <br/>
+                                    Signal Pourcentage : {{a.signal}} <br/>
+                                    wifi :  {{a.wifi}} <br/>
+                                    latitude : {{a.latitude}} <br/>
+                                    longitude : {{a.longitude}} <br/>
+                                    Last Seen : {{a.updatedAt | date : 'short'}}
+                                  </div>
+                                </ng-template>
+                                <button class="btn btn-sm btn-icon btn-outline-secondary mr-1"
+                                        [ngbTooltip]="htmlContent">
+                                  <i class="mdi mdi-information-variant  text-info mdi-18px" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-sm btn-icon btn-outline-success mr-1"
+                                        routerLink="{{device.code}}">
+                                  <i class="mdi mdi-pencil  text-info mdi-18px" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-sm btn-icon btn-outline-secondary mr-1"
+                                        (click)="delete(device.id)">
+                                  <i class="mdi mdi-trash-can  text-danger mdi-18px" aria-hidden="true"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="MESSAGE" role="tabpanel" aria-labelledby="pills-message-tab">
+                    <div class="p-4">
+                      <div class="faq-content">
+                        <div class="accordion" id="accordionExample">
+                          <div class="card border-0 rounded mb-2">
+                            <a data-toggle="collapse" href="#collapse_message" class="faq position-relative collapsed"
+                               aria-expanded="false" aria-controls="collapsethree">
+                              <div class="card-header border-0 bg-light p-3 pr-5" id="send_message">
+                                <h6 class="title mb-0"><i class="mdi mdi-send mr-1"></i>Envoyer un message</h6>
+                              </div>
+                            </a>
+                            <div id="collapse_message" class="collapse" aria-labelledby="send_message"
+                                 data-parent="#accordionExample">
+                              <div class="card-body px-2 py-4">
+                                <form>
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <label>Device</label>
+                                        <div class="position-relative">
+                                          <i data-feather="book" class="fea icon-sm icons"></i>
+                                          <input type="text" name="device" class="form-control pl-5"
+                                                 placeholder="choose your Device">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <div class="position-relative">
+                                          <i data-feather="book" class="fea icon-sm icons"></i>
+                                          <input type="text" name="phone" class="form-control pl-5"
+                                                 placeholder="enter the phone number">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <label>Message</label>
+                                        <div class="position-relative">
+                                          <i data-feather="message-circle" class="fea icon-sm icons"></i>
+                                          <textarea name="comments" id="comments" rows="2" class="form-control pl-5"
+                                                    placeholder="Your Message :"></textarea>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div><!--end row-->
+                                  <div class="row">
+                                    <div class="col-sm-12">
+                                      <input type="submit" id="submit" name="send" class="btn btn-primary"
+                                             value="Send Message">
+                                    </div><!--end col-->
+                                  </div><!--end row-->
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row row-cols-1 ml-lg-2">
+
+                      <div class="col " id="tables">
+                        <div class="component-wrapper rounded shadow">
+                          <div class="p-4 border-bottom">
+                            <h4 class="title mb-0"> Liste des Messages </h4>
+                          </div>
+
+                          <div class="p-4">
+                            <div class="table-responsive bg-white shadow rounded">
+                              <table class="table mb-0 table-center">
+                                <thead>
+                                <tr class="text-info">
+
+                                  <th scope="col">ID</th>
+                                  <th scope="col">Phone</th>
+                                  <th scope="col">Message</th>
+                                  <th scope="col">Device</th>
+                                  <th scope="col">Statut</th>
+                                  <th scope="col">Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="MESSAGE" role="tabpanel" aria-labelledby="pills-message-tab">
+                    <p class="text-muted mb-0">You can combine all the Landrick templates into a single one, you can
+                      take a component from the Application theme and use it in the Website.</p>
+                  </div>
+
+
+                </div><!--end tab content-->
+              </div><!--end col-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>

@@ -1,0 +1,72 @@
+<app-header></app-header>
+<section class="section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-12 d-none d-md-block">
+        <app-admin-menu></app-admin-menu>
+      </div>
+
+      <div class="col-lg-9 col-md-8 col-12 ">
+        <div class="row row-cols-1 ml-lg-2">
+
+          <div class="col " id="tables">
+            <div class="component-wrapper rounded shadow">
+              <div class="p-4 border-bottom">
+                <h4 class="title mb-0"> Liste des utilisateurs
+                  <button class="btn btn-sm btn-icon btn-outline-secondary" (click)="refresh()">
+                    <i class="mdi mdi-refresh mdi-18px text-white-50" aria-hidden="true"></i>
+                  </button> </h4>
+              </div>
+
+              <div class="p-4">
+                <div class="table-responsive bg-white shadow rounded">
+                  <table class="table mb-0 table-center small">
+                    <thead class="text-info">
+                    <tr>
+
+                      <th scope="col">ID</th>
+                      <th scope="col">Full Name</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Statut</th>
+                      <th scope="col">Updated_At</th>
+                      <th scope="col">OPTION</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of users">
+                      <td>{{user.id}}</td>
+                      <td>{{user.nomcomplet}}</td>
+                      <td>{{user.pseudo}}</td>
+                      <td>{{user.email}}</td>
+                      <td>{{user.phone}}</td>
+                      <td>{{user.role}}</td>
+                      <td>{{user.statut }}</td>
+                      <td>{{user.updatedAt | date :'short' }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" routerLink={{user.id}}>
+                          <i class="mdi mdi-pencil  text-success mdi-18px" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" (click)="delete(user.id)">
+                          <i class="mdi mdi-trash-can  text-danger mdi-18px" aria-hidden="true"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
